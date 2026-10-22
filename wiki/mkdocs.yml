@@ -1,0 +1,65 @@
+site_name: QuestMod
+site_description: Quest mod for Minecraft Forge 1.20.1 - NPCs, quest book, datapacks, sections, community quests and themes.
+site_url: https://lul-prog.github.io/ContractsQuest/
+repo_url: https://github.com/lul-prog/ContractsQuest
+
+theme:
+  name: material
+  palette:
+    - scheme: slate
+      primary: amber
+      accent: amber
+  features:
+    - navigation.sections
+    - navigation.top
+    - content.code.copy
+    - search.highlight
+
+markdown_extensions:
+  - admonition
+  - tables
+  - attr_list
+  - toc:
+      permalink: true
+  - pymdownx.details
+  - pymdownx.superfences
+
+plugins:
+  - search
+  - i18n:
+      docs_structure: folder
+      reconfigure_material: true
+      reconfigure_search: true
+      languages:
+        - locale: es
+          name: Español
+          default: true
+          build: true
+          nav_translations:
+            Home: Inicio
+            Installation: Instalación
+            Getting started: Primeros pasos
+            Quests: Misiones
+            NPCs: NPC
+            Modpacks and datapacks: Modpacks y datapacks
+            Theming: Personalización
+            Languages: Idiomas
+            Compatibility: Compatibilidad
+            Reference: Referencia
+            FAQ: Preguntas frecuentes
+        - locale: en
+          name: English
+          build: true
+
+nav:
+  - Home: index.md
+  - Installation: install.md
+  - Getting started: getting-started.md
+  - Quests: quests.md
+  - NPCs: npcs.md
+  - Modpacks and datapacks: modpacks.md
+  - Theming: theming.md
+  - Languages: languages.md
+  - Compatibility: compatibility.md
+  - Reference: reference.md
+  - FAQ: faq.md
