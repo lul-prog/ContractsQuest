@@ -1,0 +1,30 @@
+name: Desempaquetar wiki (temporal)
+
+on:
+  push:
+    paths:
+      - 'contractsquest-wiki-github.zip'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  unpack:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Descomprimir el zip de la wiki
+        run: |
+          if [ ! -f contractsquest-wiki-github.zip ]; then
+            echo "No hay zip que descomprimir; terminando."
+            exit 0
+          fi
+          unzip -o contractsquest-wiki-github.zip
+          rm contractsquest-wiki-github.zip
+          rm -f .github/workflows/unpack.yml
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -m "Publicar contenido de la wiki de ContractsQuest" || echo "Nada que confirmar"
+          git push
