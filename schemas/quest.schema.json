@@ -1,0 +1,58 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "QuestMod quest",
+  "description": "data/<namespace>/questmod/quests/<name>.json",
+  "type": "object",
+  "required": ["name", "objectives"],
+  "additionalProperties": false,
+  "properties": {
+    "name": { "type": "string", "description": "Quest name. Start with $ to use a language key." },
+    "description": { "type": "string" },
+    "icon": { "type": "string", "description": "Item id, e.g. minecraft:iron_sword" },
+    "access": { "enum": ["npc", "book", "both"], "default": "npc" },
+    "section": { "type": "string", "description": "Section id, e.g. mypack:create" },
+    "scope": { "enum": ["individual", "community"], "default": "individual" },
+    "min_contribution": { "type": "integer", "minimum": 1, "default": 1, "description": "Community only." },
+    "auto_accept": { "type": "boolean", "default": false },
+    "auto_claim": { "type": "boolean", "default": false, "description": "Ignored for community quests." },
+    "requires": { "type": "array", "items": { "type": "string" }, "description": "Quest ids that must be claimed first (ignored for community quests)." },
+    "objectives": {
+      "type": "array", "minItems": 1, "maxItems": 6,
+      "items": {
+        "type": "object", "required": ["type", "target"], "additionalProperties": false,
+        "properties": {
+          "type": { "enum": ["kill", "break", "eat", "craft", "smelt", "deliver"] },
+          "target": { "type": "string", "description": "Id (minecraft:zombie) or tag (#minecraft:logs)." },
+          "count": { "type": "integer", "minimum": 1, "default": 1 }
+        }
+      }
+    },
+    "rewards": { "$ref": "#/definitions/rewards" },
+    "milestones": {
+      "type": "array", "maxItems": 6,
+      "items": {
+        "type": "object", "required": ["percent"], "additionalProperties": false,
+        "properties": {
+          "percent": { "type": "integer", "minimum": 1, "maximum": 99 },
+          "rewards": { "$ref": "#/definitions/rewards" },
+          "xp": { "type": "integer", "minimum": 0 }
+        }
+      }
+    },
+    "xp": { "type": "integer", "minimum": 0 },
+    "show_reward": { "type": "boolean", "default": true }
+  },
+  "definitions": {
+    "rewards": {
+      "type": "array", "maxItems": 6,
+      "items": {
+        "type": "object", "required": ["item"], "additionalProperties": false,
+        "properties": {
+          "item": { "type": "string" },
+          "count": { "type": "integer", "minimum": 1, "default": 1 },
+          "nbt": { "type": "string", "description": "SNBT of the item, e.g. {Enchantments:[...]}" }
+        }
+      }
+    }
+  }
+}
