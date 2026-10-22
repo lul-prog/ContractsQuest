@@ -1,4 +1,4 @@
-site_name: QuestMod
+site_name: ContractsQuest
 site_description: Quest mod for Minecraft Forge 1.20.1 - NPCs, quest book, datapacks, sections, community quests and themes.
 site_url: https://lul-prog.github.io/ContractsQuest/
 repo_url: https://github.com/lul-prog/ContractsQuest
@@ -9,11 +9,11 @@ theme:
     - scheme: slate
       primary: amber
       accent: amber
-  features:
-    - navigation.sections
-    - navigation.top
-    - content.code.copy
-    - search.highlight
+    features:
+      - navigation.sections
+      - navigation.top
+      - content.code.copy
+      - search.highlight
 
 markdown_extensions:
   - admonition
@@ -33,7 +33,6 @@ plugins:
       languages:
         - locale: es
           name: Español
-          default: true
           build: true
           nav_translations:
             Home: Inicio
@@ -49,8 +48,8 @@ plugins:
             FAQ: Preguntas frecuentes
         - locale: en
           name: English
+          default: true
           build: true
-
 nav:
   - Home: index.md
   - Installation: install.md
