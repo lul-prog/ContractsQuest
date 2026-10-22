@@ -9,11 +9,11 @@ theme:
     - scheme: slate
       primary: amber
       accent: amber
-    features:
-      - navigation.sections
-      - navigation.top
-      - content.code.copy
-      - search.highlight
+  features:
+    - navigation.sections
+    - navigation.top
+    - content.code.copy
+    - search.highlight
 
 markdown_extensions:
   - admonition
@@ -50,6 +50,7 @@ plugins:
           name: English
           default: true
           build: true
+        -
 nav:
   - Home: index.md
   - Installation: install.md
